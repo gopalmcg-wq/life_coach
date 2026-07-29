@@ -141,6 +141,32 @@ img {
   width: min(760px, 100%);
 }
 
+.hero-content .eyebrow,
+.hero-content h1,
+.hero-content .hero-copy,
+.hero-content .hero-actions,
+.hero-content .credential-row {
+  opacity: 0;
+  transform: translateY(18px);
+  animation: hero-copy-in 850ms ease forwards;
+}
+
+.hero-content h1 {
+  animation-delay: 130ms;
+}
+
+.hero-content .hero-copy {
+  animation-delay: 260ms;
+}
+
+.hero-content .hero-actions {
+  animation-delay: 390ms;
+}
+
+.hero-content .credential-row {
+  animation-delay: 520ms;
+}
+
 .eyebrow,
 .section-kicker {
   margin: 0 0 18px;
@@ -198,6 +224,27 @@ h3 {
   flex-wrap: wrap;
   gap: 12px;
   margin-top: 34px;
+}
+
+.credential-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.credential-row span {
+  display: inline-flex;
+  min-height: 34px;
+  align-items: center;
+  border: 1px solid rgba(255, 253, 248, 0.28);
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: rgba(255, 253, 248, 0.82);
+  background: rgba(255, 253, 248, 0.08);
+  font-size: 0.78rem;
+  font-weight: 800;
+  backdrop-filter: blur(16px);
 }
 
 .button {
@@ -267,7 +314,7 @@ h3 {
 .intro-grid p,
 .founder-copy p,
 .boundary p,
-.apply-inner p {
+.booking-inner p {
   margin: 0;
   color: var(--muted);
   font-size: clamp(1.03rem, 1.35vw, 1.28rem);
@@ -312,6 +359,16 @@ h3 {
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background: rgba(247, 243, 234, 0.58);
+  transition:
+    background 220ms ease,
+    transform 220ms ease,
+    box-shadow 220ms ease;
+}
+
+.founder-notes article:hover {
+  background: var(--paper);
+  box-shadow: 0 18px 44px rgba(21, 24, 23, 0.1);
+  transform: translateY(-4px);
 }
 
 .founder-notes span {
@@ -370,6 +427,26 @@ h3 {
 .price-card p {
   margin: 12px 0 0;
   color: var(--muted);
+}
+
+.signal-item,
+.steps article,
+.price-card {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    background 220ms ease;
+}
+
+.signal-item:hover,
+.steps article:hover,
+.price-card:hover {
+  transform: translateY(-4px);
+}
+
+.steps article:hover,
+.price-card:hover {
+  box-shadow: 0 18px 44px rgba(21, 24, 23, 0.1);
 }
 
 .philosophy {
@@ -481,7 +558,8 @@ h3 {
   border-top: 1px solid var(--line);
 }
 
-.apply-section {
+.booking-section {
+  position: relative;
   padding: clamp(76px, 11vw, 150px) clamp(20px, 5vw, 74px);
   color: var(--white);
   background:
@@ -489,21 +567,26 @@ h3 {
     var(--forest);
 }
 
-.apply-inner {
+.legacy-anchor {
+  position: absolute;
+  top: 0;
+}
+
+.booking-inner {
   width: min(820px, 100%);
 }
 
-.apply-inner h2 {
+.booking-inner h2 {
   max-width: 720px;
 }
 
-.apply-inner p {
+.booking-inner p {
   max-width: 640px;
   margin-top: 24px;
   color: rgba(255, 253, 248, 0.72);
 }
 
-.apply-inner .button {
+.booking-inner .button {
   margin-top: 34px;
 }
 
@@ -519,10 +602,10 @@ h3 {
 
 .reveal-ready [data-reveal] {
   opacity: 0;
-  transform: translateY(22px);
+  transform: translateY(34px);
   transition:
-    opacity 760ms ease,
-    transform 760ms ease;
+    opacity 900ms ease,
+    transform 900ms ease;
 }
 
 .reveal-ready [data-reveal].is-visible {
@@ -556,6 +639,13 @@ h3 {
 
   to {
     transform: scale(1);
+  }
+}
+
+@keyframes hero-copy-in {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -695,6 +785,15 @@ h3 {
   }
 
   .reveal-ready [data-reveal] {
+    opacity: 1;
+    transform: none;
+  }
+
+  .hero-content .eyebrow,
+  .hero-content h1,
+  .hero-content .hero-copy,
+  .hero-content .hero-actions,
+  .hero-content .credential-row {
     opacity: 1;
     transform: none;
   }
